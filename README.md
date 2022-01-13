@@ -1,5 +1,4 @@
 # PIVOT
-============================
 PIVOT (<ins>P</ins>ersonalised <ins>I</ins>dentification of dri<ins>V</ins>er <ins>O</ins>ncogenes and <ins>T</ins>umour suppressors) is a tool used to identify personalised tumour suppressor genes (TSGs) and oncogenes (OGs) using multi-omic data. The genes are labelled at for each patient as TSG or OG.
 
 ## Table of Contents
