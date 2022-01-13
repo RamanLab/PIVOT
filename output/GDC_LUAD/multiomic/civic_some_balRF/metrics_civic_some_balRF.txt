@@ -1,0 +1,22 @@
+Data trained on civic
+Features trained on some
+Number of features = 154
+Features	Index(['SIFT_pred', 'Polyphen2_HDIV_pred', 'Polyphen2_HVAR_pred', 'LRT_pred',
+       'MutationTaster_pred', 'MutationAssessor_pred', 'FATHMM_pred',
+       'PROVEAN_pred', 'fathmm-MKL_coding_pred', 'MetaSVM_pred',
+       ...
+       'logCPM', 'Degree', 'Closeness_centrality', 'Betweeness_centrality',
+       'FC_Degree', 'FC_Closeness_centrality', 'FC_Betweeness_centrality',
+       'neigh_FC', 'neigh_CNV_FC', 'neigh_CNV_normFC'],
+      dtype='object', length=154)
+
+
+
+	Neutral
+Train	13054
+Test	6486
+
+Total number samples (Train) = 343
+
+Total number samples (Test) = 154
+

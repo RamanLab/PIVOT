@@ -1,0 +1,49 @@
+Data trained on cgc
+Features trained on some
+Number of features = 54
+Features	Index(['SIFT_pred', 'Polyphen2_HDIV_pred', 'Polyphen2_HVAR_pred', 'LRT_pred',
+       'MutationTaster_pred', 'MutationAssessor_pred', 'FATHMM_pred',
+       'PROVEAN_pred', 'fathmm-MKL_coding_pred', 'MetaSVM_pred', 'MetaLR_pred',
+       'Variant_Classification_Missense_Mutation',
+       'Variant_Classification_Silent',
+       'Variant_Classification_Nonsense_Mutation',
+       'Variant_Classification_Frame_Shift_Del',
+       'Variant_Classification_Intron', 'Variant_Classification_RNA',
+       'Variant_Classification_Frame_Shift_Ins',
+       'Variant_Classification_5'UTR', 'Variant_Classification_3'UTR',
+       'Variant_Classification_3'Flank', 'Variant_Classification_Splice_Site',
+       'Variant_Classification_Splice_Region',
+       'Variant_Classification_5'Flank', 'Variant_Classification_In_Frame_Del',
+       'Variant_Classification_Translation_Start_Site',
+       'Variant_Classification_Nonstop_Mutation',
+       'Variant_Classification_In_Frame_Ins', 'Variant_Classification_IGR',
+       'DOM_PF13853', 'DOM_PF08180', 'DOM_PF15482', 'DOM_PF12301',
+       'DOM_PF05392', 'DOM_PF12540', 'DOM_PF14642', 'DOM_PF00757',
+       'DOM_PF09040', 'DOM_PF00505', 'DOM_PF00180', 'DOM_PF16210',
+       'DOM_PF01500', 'DOM_PF13885', 'DOM_PF07544', 'DOM_PF00870',
+       'DOM_PF07710', 'DOM_PF05028', 'DOM_PF16454', 'DOM_PF10409',
+       'DOM_PF00277', 'DOM_PF07458', 'DOM_PF10581', 'DOM_PF15664',
+       'DOM_PF05206'],
+      dtype='object')
+
+
+
+	Neutral	Oncogene	Tumor suppressor
+Train	984	509	444
+Test	407	227	191
+
+Total number samples (Train) = 349
+
+Total number samples (Test) = 150
+
+Model used = BalBag
+Best estimator = BalancedBaggingClassifier(base_estimator=DecisionTreeClassifier(),
+                          n_estimators=20, n_jobs=2, random_state=0)
+Best parameter = {'max_features': 1.0, 'n_estimators': 20}
+Best score = 0.6303297080574246
+	Training			Test
+	Neutral	Oncogene	Tumor suppressor	Neutral	Oncogene	Tumor suppressor
+Accuracy	0.7811			0.6061
+F1 score	0.8076	0.8392	0.6660	0.6596	0.6539	0.4327	
+Precision	0.7945	0.9163	0.6347	0.6315	0.7135	0.4362	
+Recall	0.8211	0.7741	0.7005	0.6904	0.6035	0.4293	

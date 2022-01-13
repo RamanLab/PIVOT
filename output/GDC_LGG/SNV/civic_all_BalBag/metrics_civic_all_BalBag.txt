@@ -1,0 +1,46 @@
+Data trained on civic
+Features trained on all
+Number of features = 77
+Features	Index(['SIFT_score', 'SIFT_pred', 'Polyphen2_HDIV_score',
+       'Polyphen2_HDIV_pred', 'Polyphen2_HVAR_score', 'Polyphen2_HVAR_pred',
+       'LRT_score', 'LRT_pred', 'MutationTaster_score', 'MutationTaster_pred',
+       'MutationAssessor_score', 'MutationAssessor_pred', 'FATHMM_score',
+       'FATHMM_pred', 'PROVEAN_score', 'PROVEAN_pred', 'VEST3_score',
+       'CADD_raw', 'CADD_phred', 'DANN_score', 'fathmm-MKL_coding_score',
+       'fathmm-MKL_coding_pred', 'MetaSVM_score', 'MetaSVM_pred',
+       'MetaLR_score', 'MetaLR_pred', 'integrated_fitCons_score',
+       'integrated_confidence_value', 'GERP++_RS', 'phyloP7way_vertebrate',
+       'phyloP20way_mammalian', 'phastCons7way_vertebrate',
+       'phastCons20way_mammalian', 'SiPhy_29way_logOdds',
+       'Variant_Classification_Missense_Mutation',
+       'Variant_Classification_Silent',
+       'Variant_Classification_Nonsense_Mutation',
+       'Variant_Classification_Frame_Shift_Del',
+       'Variant_Classification_Intron', 'Variant_Classification_RNA',
+       'Variant_Classification_Frame_Shift_Ins',
+       'Variant_Classification_5'UTR', 'Variant_Classification_3'UTR',
+       'Variant_Classification_3'Flank', 'Variant_Classification_Splice_Site',
+       'Variant_Classification_Splice_Region',
+       'Variant_Classification_5'Flank', 'Variant_Classification_In_Frame_Del',
+       'Variant_Classification_Translation_Start_Site',
+       'Variant_Classification_Nonstop_Mutation',
+       'Variant_Classification_In_Frame_Ins', 'Variant_Classification_IGR',
+       'DOM_PF13853', 'DOM_PF08180', 'DOM_PF15482', 'DOM_PF12301',
+       'DOM_PF05392', 'DOM_PF12540', 'DOM_PF14642', 'DOM_PF00757',
+       'DOM_PF09040', 'DOM_PF00505', 'DOM_PF00180', 'DOM_PF16210',
+       'DOM_PF01500', 'DOM_PF13885', 'DOM_PF07544', 'DOM_PF00870',
+       'DOM_PF07710', 'DOM_PF05028', 'DOM_PF16454', 'DOM_PF10409',
+       'DOM_PF00277', 'DOM_PF07458', 'DOM_PF10581', 'DOM_PF15664',
+       'DOM_PF05206'],
+      dtype='object')
+
+
+
+	Neutral
+Train	323
+Test	137
+
+Total number samples (Train) = 202
+
+Total number samples (Test) = 80
+

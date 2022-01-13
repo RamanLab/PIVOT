@@ -1,0 +1,33 @@
+Data trained on cgc
+Features trained on all
+Number of features = 177
+Features	Index(['SIFT_score', 'SIFT_pred', 'Polyphen2_HDIV_score',
+       'Polyphen2_HDIV_pred', 'Polyphen2_HVAR_score', 'Polyphen2_HVAR_pred',
+       'LRT_score', 'LRT_pred', 'MutationTaster_score', 'MutationTaster_pred',
+       ...
+       'logCPM', 'Degree', 'Closeness_centrality', 'Betweeness_centrality',
+       'FC_Degree', 'FC_Closeness_centrality', 'FC_Betweeness_centrality',
+       'neigh_FC', 'neigh_CNV_FC', 'neigh_CNV_normFC'],
+      dtype='object', length=177)
+
+
+
+	Neutral	Oncogene	Tumor suppressor
+Train	5841	595	1233
+Test	2954	287	612
+
+Total number samples (Train) = 334
+
+Total number samples (Test) = 154
+
+Model used = BalBag
+Best estimator = BalancedBaggingClassifier(base_estimator=DecisionTreeClassifier(),
+                          n_estimators=200, n_jobs=2, random_state=0)
+Best parameter = {'max_features': 1.0, 'n_estimators': 200}
+Best score = 0.8836019930212892
+	Training			Test
+	Neutral	Oncogene	Tumor suppressor	Neutral	Oncogene	Tumor suppressor
+Accuracy	0.9600			0.9060
+F1 score	0.9737	0.9589	0.9018	0.9444	0.8121	0.7803	
+Precision	0.9968	0.9211	0.8354	0.9640	0.7832	0.7274	
+Recall	0.9517	1.0000	0.9797	0.9255	0.8432	0.8415	

@@ -1,0 +1,49 @@
+Data trained on cgc
+Features trained on some
+Number of features = 60
+Features	Index(['SIFT_pred', 'Polyphen2_HDIV_pred', 'Polyphen2_HVAR_pred', 'LRT_pred',
+       'MutationTaster_pred', 'MutationAssessor_pred', 'FATHMM_pred',
+       'PROVEAN_pred', 'fathmm-MKL_coding_pred', 'MetaSVM_pred', 'MetaLR_pred',
+       'Variant_Classification_Missense_Mutation',
+       'Variant_Classification_Silent',
+       'Variant_Classification_Nonsense_Mutation',
+       'Variant_Classification_Frame_Shift_Del',
+       'Variant_Classification_Intron', 'Variant_Classification_RNA',
+       'Variant_Classification_Frame_Shift_Ins',
+       'Variant_Classification_5'UTR', 'Variant_Classification_3'UTR',
+       'Variant_Classification_3'Flank', 'Variant_Classification_Splice_Site',
+       'Variant_Classification_Splice_Region',
+       'Variant_Classification_5'Flank', 'Variant_Classification_In_Frame_Del',
+       'Variant_Classification_Translation_Start_Site',
+       'Variant_Classification_Nonstop_Mutation',
+       'Variant_Classification_In_Frame_Ins', 'Variant_Classification_IGR',
+       'DOM_PF13853', 'DOM_PF00119', 'DOM_PF03154', 'DOM_PF02312',
+       'DOM_PF00115', 'DOM_PF00510', 'DOM_PF00028', 'DOM_PF13631',
+       'DOM_PF15504', 'DOM_PF15260', 'DOM_PF06229', 'DOM_PF00320',
+       'DOM_PF15991', 'DOM_PF09040', 'DOM_PF00125', 'DOM_PF06455',
+       'DOM_PF00146', 'DOM_PF00507', 'DOM_PF01059', 'DOM_PF00870',
+       'DOM_PF07710', 'DOM_PF00792', 'DOM_PF16454', 'DOM_PF02192',
+       'DOM_PF00613', 'DOM_PF10409', 'DOM_PF00361', 'DOM_PF00853',
+       'DOM_PF00907', 'DOM_PF15444', 'DOM_PF04553'],
+      dtype='object')
+
+
+
+	Neutral	Oncogene	Tumor suppressor
+Train	4911	1046	1645
+Test	2120	465	746
+
+Total number samples (Train) = 680
+
+Total number samples (Test) = 295
+
+Model used = EasyEns
+Best estimator = EasyEnsembleClassifier(n_jobs=2, random_state=0)
+Best parameter = {'n_estimators': 10}
+Best score = 0.5055214829471357
+	Training			Test
+	Neutral	Oncogene	Tumor suppressor	Neutral	Oncogene	Tumor suppressor
+Accuracy	0.4733			0.4656
+F1 score	0.5693	0.3459	0.3796	0.5616	0.3410	0.3722	
+Precision	0.7248	0.2549	0.3306	0.7075	0.2562	0.3234	
+Recall	0.4687	0.5382	0.4456	0.4656	0.5097	0.4383	

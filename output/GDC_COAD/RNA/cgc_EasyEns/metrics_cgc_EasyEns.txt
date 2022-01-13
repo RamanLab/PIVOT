@@ -1,0 +1,27 @@
+Data trained on cgc
+Number of features = 10
+Features	Index(['logFC', 'logCPM', 'Degree', 'Closeness_centrality',
+       'Betweeness_centrality', 'FC_Degree', 'FC_Closeness_centrality',
+       'FC_Betweeness_centrality', 'neigh_FC', 'neigh_normFC'],
+      dtype='object')
+
+
+
+	Neutral	Oncogene	Tumor suppressor
+Train	4351	755	1574
+Test	1774	323	688
+
+Total number samples (Train) = 252
+
+Total number samples (Test) = 107
+
+Model used = EasyEns
+Best estimator = EasyEnsembleClassifier(n_estimators=40, n_jobs=2, random_state=0)
+Best parameter = {'n_estimators': 40}
+Best score = 0.7362817299039687
+	Training			Test
+	Neutral	Oncogene	Tumor suppressor	Neutral	Oncogene	Tumor suppressor
+Accuracy	0.7409			0.7465
+F1 score	0.8473	0.4338	0.6124	0.8510	0.4158	0.6306	
+Precision	0.8939	0.5361	0.5207	0.8835	0.5769	0.5424	
+Recall	0.8053	0.3642	0.7433	0.8207	0.3251	0.7529	

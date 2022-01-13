@@ -1,0 +1,27 @@
+Data trained on bailey
+Number of features = 10
+Features	Index(['logFC', 'logCPM', 'Degree', 'Closeness_centrality',
+       'Betweeness_centrality', 'FC_Degree', 'FC_Closeness_centrality',
+       'FC_Betweeness_centrality', 'neigh_FC', 'neigh_normFC'],
+      dtype='object')
+
+
+
+	Neutral	Oncogene	Tumor suppressor
+Train	4601	282	555
+Test	1882	117	245
+
+Total number samples (Train) = 252
+
+Total number samples (Test) = 107
+
+Model used = EasyEns
+Best estimator = EasyEnsembleClassifier(n_estimators=40, n_jobs=2, random_state=0)
+Best parameter = {'n_estimators': 40}
+Best score = 0.9362928920170137
+	Training			Test
+	Neutral	Oncogene	Tumor suppressor	Neutral	Oncogene	Tumor suppressor
+Accuracy	0.9101			0.9167
+F1 score	0.9678	0.4576	0.6396	0.9696	0.5455	0.6605	
+Precision	0.9701	0.8318	0.5559	0.9652	0.9375	0.6027	
+Recall	0.9654	0.3156	0.7532	0.9740	0.3846	0.7306	

@@ -1,0 +1,28 @@
+Data trained on bailey
+Number of features = 10
+Features	Index(['logFC', 'logCPM', 'Degree', 'Closeness_centrality',
+       'Betweeness_centrality', 'FC_Degree', 'FC_Closeness_centrality',
+       'FC_Betweeness_centrality', 'neigh_FC', 'neigh_normFC'],
+      dtype='object')
+
+
+
+	Neutral	Oncogene	Tumor suppressor
+Train	4601	282	555
+Test	1882	117	245
+
+Total number samples (Train) = 252
+
+Total number samples (Test) = 107
+
+Model used = BalBag
+Best estimator = BalancedBaggingClassifier(base_estimator=DecisionTreeClassifier(),
+                          n_estimators=500, n_jobs=2, random_state=0)
+Best parameter = {'max_features': 1.0, 'n_estimators': 500}
+Best score = 0.986122513598916
+	Training			Test
+	Neutral	Oncogene	Tumor suppressor	Neutral	Oncogene	Tumor suppressor
+Accuracy	0.9892			0.9915
+F1 score	0.9935	0.9809	0.9585	0.9949	0.9915	0.9665	
+Precision	1.0000	0.9625	0.9204	1.0000	0.9832	0.9351	
+Recall	0.9872	1.0000	1.0000	0.9899	1.0000	1.0000	

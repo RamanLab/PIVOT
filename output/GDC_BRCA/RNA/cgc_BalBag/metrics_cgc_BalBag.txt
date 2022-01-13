@@ -1,0 +1,28 @@
+Data trained on cgc
+Number of features = 10
+Features	Index(['logFC', 'logCPM', 'Degree', 'Closeness_centrality',
+       'Betweeness_centrality', 'FC_Degree', 'FC_Closeness_centrality',
+       'FC_Betweeness_centrality', 'neigh_FC', 'neigh_normFC'],
+      dtype='object')
+
+
+
+	Neutral	Oncogene	Tumor suppressor
+Train	4062	875	1407
+Test	1977	434	714
+
+Total number samples (Train) = 665
+
+Total number samples (Test) = 298
+
+Model used = BalBag
+Best estimator = BalancedBaggingClassifier(base_estimator=DecisionTreeClassifier(),
+                          n_estimators=500, n_jobs=2, random_state=0)
+Best parameter = {'max_features': 1.0, 'n_estimators': 500}
+Best score = 0.9810895469810046
+	Training			Test
+	Neutral	Oncogene	Tumor suppressor	Neutral	Oncogene	Tumor suppressor
+Accuracy	0.9968			0.9888
+F1 score	0.9975	0.9972	0.9947	0.9921	0.9838	0.9826	
+Precision	0.9995	0.9943	0.9908	0.9934	0.9884	0.9765	
+Recall	0.9956	1.0000	0.9986	0.9909	0.9793	0.9888	

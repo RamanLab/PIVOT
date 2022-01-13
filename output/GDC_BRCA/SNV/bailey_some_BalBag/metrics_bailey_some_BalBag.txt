@@ -1,0 +1,50 @@
+Data trained on bailey
+Features trained on some
+Number of features = 60
+Features	Index(['SIFT_pred', 'Polyphen2_HDIV_pred', 'Polyphen2_HVAR_pred', 'LRT_pred',
+       'MutationTaster_pred', 'MutationAssessor_pred', 'FATHMM_pred',
+       'PROVEAN_pred', 'fathmm-MKL_coding_pred', 'MetaSVM_pred', 'MetaLR_pred',
+       'Variant_Classification_Missense_Mutation',
+       'Variant_Classification_Silent',
+       'Variant_Classification_Nonsense_Mutation',
+       'Variant_Classification_Frame_Shift_Del',
+       'Variant_Classification_Intron', 'Variant_Classification_RNA',
+       'Variant_Classification_Frame_Shift_Ins',
+       'Variant_Classification_5'UTR', 'Variant_Classification_3'UTR',
+       'Variant_Classification_3'Flank', 'Variant_Classification_Splice_Site',
+       'Variant_Classification_Splice_Region',
+       'Variant_Classification_5'Flank', 'Variant_Classification_In_Frame_Del',
+       'Variant_Classification_Translation_Start_Site',
+       'Variant_Classification_Nonstop_Mutation',
+       'Variant_Classification_In_Frame_Ins', 'Variant_Classification_IGR',
+       'DOM_PF13853', 'DOM_PF00119', 'DOM_PF03154', 'DOM_PF02312',
+       'DOM_PF00115', 'DOM_PF00510', 'DOM_PF00028', 'DOM_PF13631',
+       'DOM_PF15504', 'DOM_PF15260', 'DOM_PF06229', 'DOM_PF00320',
+       'DOM_PF15991', 'DOM_PF09040', 'DOM_PF00125', 'DOM_PF06455',
+       'DOM_PF00146', 'DOM_PF00507', 'DOM_PF01059', 'DOM_PF00870',
+       'DOM_PF07710', 'DOM_PF00792', 'DOM_PF16454', 'DOM_PF02192',
+       'DOM_PF00613', 'DOM_PF10409', 'DOM_PF00361', 'DOM_PF00853',
+       'DOM_PF00907', 'DOM_PF15444', 'DOM_PF04553'],
+      dtype='object')
+
+
+
+	Neutral	Oncogene	Tumor suppressor
+Train	5286	413	948
+Test	2282	163	397
+
+Total number samples (Train) = 679
+
+Total number samples (Test) = 295
+
+Model used = BalBag
+Best estimator = BalancedBaggingClassifier(base_estimator=DecisionTreeClassifier(),
+                          n_estimators=30, n_jobs=2, random_state=0)
+Best parameter = {'max_features': 1.0, 'n_estimators': 30}
+Best score = 0.7826011998158358
+	Training			Test
+	Neutral	Oncogene	Tumor suppressor	Neutral	Oncogene	Tumor suppressor
+Accuracy	0.7829			0.7505
+F1 score	0.8523	0.4948	0.6794	0.8323	0.4308	0.6082	
+Precision	0.9608	0.3466	0.5691	0.9464	0.2986	0.4960	
+Recall	0.7658	0.8644	0.8428	0.7428	0.7730	0.7859	

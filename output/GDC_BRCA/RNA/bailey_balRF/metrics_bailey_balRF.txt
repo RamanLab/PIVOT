@@ -1,0 +1,28 @@
+Data trained on bailey
+Number of features = 10
+Features	Index(['logFC', 'logCPM', 'Degree', 'Closeness_centrality',
+       'Betweeness_centrality', 'FC_Degree', 'FC_Closeness_centrality',
+       'FC_Betweeness_centrality', 'neigh_FC', 'neigh_normFC'],
+      dtype='object')
+
+
+
+	Neutral	Oncogene	Tumor suppressor
+Train	4364	347	840
+Test	2118	174	404
+
+Total number samples (Train) = 662
+
+Total number samples (Test) = 299
+
+Model used = balRF
+Best estimator = BalancedRandomForestClassifier(max_depth=4, max_features=10, n_estimators=500,
+                               n_jobs=2, random_state=0)
+Best parameter = {'criterion': 'gini', 'max_depth': 4, 'max_features': 10, 'n_estimators': 500}
+Best score = 0.9350488028197292
+	Training			Test
+	Neutral	Oncogene	Tumor suppressor	Neutral	Oncogene	Tumor suppressor
+Accuracy	0.9315			0.9314
+F1 score	0.9598	0.8714	0.8344	0.9592	0.8832	0.8321	
+Precision	1.0000	0.8640	0.7165	1.0000	0.8757	0.7125	
+Recall	0.9228	0.8790	0.9988	0.9216	0.8908	1.0000	

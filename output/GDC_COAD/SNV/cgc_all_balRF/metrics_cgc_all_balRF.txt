@@ -1,0 +1,58 @@
+Data trained on cgc
+Features trained on all
+Number of features = 84
+Features	Index(['SIFT_score', 'SIFT_pred', 'Polyphen2_HDIV_score',
+       'Polyphen2_HDIV_pred', 'Polyphen2_HVAR_score', 'Polyphen2_HVAR_pred',
+       'LRT_score', 'LRT_pred', 'MutationTaster_score', 'MutationTaster_pred',
+       'MutationAssessor_score', 'MutationAssessor_pred', 'FATHMM_score',
+       'FATHMM_pred', 'PROVEAN_score', 'PROVEAN_pred', 'VEST3_score',
+       'CADD_raw', 'CADD_phred', 'DANN_score', 'fathmm-MKL_coding_score',
+       'fathmm-MKL_coding_pred', 'MetaSVM_score', 'MetaSVM_pred',
+       'MetaLR_score', 'MetaLR_pred', 'integrated_fitCons_score',
+       'integrated_confidence_value', 'GERP++_RS', 'phyloP7way_vertebrate',
+       'phyloP20way_mammalian', 'phastCons7way_vertebrate',
+       'phastCons20way_mammalian', 'SiPhy_29way_logOdds',
+       'Variant_Classification_Missense_Mutation',
+       'Variant_Classification_Silent',
+       'Variant_Classification_Nonsense_Mutation',
+       'Variant_Classification_Frame_Shift_Del',
+       'Variant_Classification_Intron', 'Variant_Classification_RNA',
+       'Variant_Classification_Frame_Shift_Ins',
+       'Variant_Classification_5'UTR', 'Variant_Classification_3'UTR',
+       'Variant_Classification_3'Flank', 'Variant_Classification_Splice_Site',
+       'Variant_Classification_Splice_Region',
+       'Variant_Classification_5'Flank', 'Variant_Classification_In_Frame_Del',
+       'Variant_Classification_Translation_Start_Site',
+       'Variant_Classification_Nonstop_Mutation',
+       'Variant_Classification_In_Frame_Ins', 'Variant_Classification_IGR',
+       'DOM_PF00001', 'DOM_PF13853', 'DOM_PF16630', 'DOM_PF16633',
+       'DOM_PF02166', 'DOM_PF16629', 'DOM_PF00028', 'DOM_PF11411',
+       'DOM_PF07142', 'DOM_PF14825', 'DOM_PF15266', 'DOM_PF06346',
+       'DOM_PF10513', 'DOM_PF16692', 'DOM_PF08718', 'DOM_PF06777',
+       'DOM_PF00520', 'DOM_PF16210', 'DOM_PF13885', 'DOM_PF03166',
+       'DOM_PF00129', 'DOM_PF15692', 'DOM_PF04680', 'DOM_PF00870',
+       'DOM_PF07710', 'DOM_PF02192', 'DOM_PF00613', 'DOM_PF16551',
+       'DOM_PF12721', 'DOM_PF00071', 'DOM_PF15444', 'DOM_PF12529'],
+      dtype='object')
+
+
+
+	Neutral	Oncogene	Tumor suppressor
+Train	1560	287	502
+Test	711	147	225
+
+Total number samples (Train) = 253
+
+Total number samples (Test) = 108
+
+Model used = balRF
+Best estimator = BalancedRandomForestClassifier(criterion='entropy', max_depth=3,
+                               max_features=50, n_jobs=2, random_state=0)
+Best parameter = {'criterion': 'entropy', 'max_depth': 3, 'max_features': 50, 'n_estimators': 100}
+Best score = 0.609090202988553
+	Training			Test
+	Neutral	Oncogene	Tumor suppressor	Neutral	Oncogene	Tumor suppressor
+Accuracy	0.6318			0.6020
+F1 score	0.7433	0.3866	0.3951	0.7227	0.4108	0.3469	
+Precision	0.7247	0.9857	0.3532	0.7143	1.0000	0.2965	
+Recall	0.7628	0.2404	0.4482	0.7314	0.2585	0.4178	

@@ -1,0 +1,28 @@
+Data trained on civic
+Number of features = 10
+Features	Index(['logFC', 'logCPM', 'Degree', 'Closeness_centrality',
+       'Betweeness_centrality', 'FC_Degree', 'FC_Closeness_centrality',
+       'FC_Betweeness_centrality', 'neigh_FC', 'neigh_normFC'],
+      dtype='object')
+
+
+
+	Driver	Neutral
+Train	199	4364
+Test	105	2118
+
+Total number samples (Train) = 647
+
+Total number samples (Test) = 291
+
+Model used = BalBag
+Best estimator = BalancedBaggingClassifier(base_estimator=DecisionTreeClassifier(), n_jobs=2,
+                          random_state=0)
+Best parameter = {'max_features': 1.0, 'n_estimators': 10}
+Best score = 0.9965478841190609
+	Training			Test
+	Driver	Neutral	Driver	Neutral
+Accuracy	0.9965		0.9960
+F1 score	0.9612	0.9982	0.9589	0.9979	
+Precision	0.9296	0.9998	0.9211	1.0000	
+Recall	0.9950	0.9966	1.0000	0.9958	

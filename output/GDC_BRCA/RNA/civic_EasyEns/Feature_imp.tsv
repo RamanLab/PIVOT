@@ -1,0 +1,11 @@
+Features	Importance
+Closeness_centrality	0.23300000000000004
+logFC	0.22500000000000003
+Betweeness_centrality	0.18600000000000005
+Degree	0.17800000000000002
+logCPM	0.094
+neigh_FC	0.05399999999999999
+neigh_normFC	0.030000000000000006
+FC_Degree	0.0
+FC_Closeness_centrality	0.0
+FC_Betweeness_centrality	0.0

@@ -1,0 +1,28 @@
+Data trained on martellotto
+Number of features = 10
+Features	Index(['logFC', 'logCPM', 'Degree', 'Closeness_centrality',
+       'Betweeness_centrality', 'FC_Degree', 'FC_Closeness_centrality',
+       'FC_Betweeness_centrality', 'neigh_FC', 'neigh_normFC'],
+      dtype='object')
+
+
+
+	Neutral	New cancer gene	Oncogene	Tumor suppressor
+Train	4364	19	213	134
+Test	2118	4	121	66
+
+Total number samples (Train) = 653
+
+Total number samples (Test) = 294
+
+Model used = BalBag
+Best estimator = BalancedBaggingClassifier(base_estimator=DecisionTreeClassifier(),
+                          n_estimators=100, n_jobs=2, random_state=0)
+Best parameter = {'max_features': 1.0, 'n_estimators': 100}
+Best score = 0.9704631880671556
+	Training			Test
+	Neutral	New cancer gene	Oncogene	Tumor suppressor	Neutral	New cancer gene	Oncogene	Tumor suppressor
+Accuracy	0.9622				0.9584
+F1 score	0.9793	0.2111	0.9417	0.9520	0.9776	0.0952	0.9474	0.9242	
+Precision	0.9986	0.1180	0.9013	0.9416	0.9971	0.0500	0.9286	0.9242	
+Recall	0.9608	1.0000	0.9859	0.9627	0.9589	1.0000	0.9669	0.9242	

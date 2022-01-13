@@ -1,0 +1,33 @@
+Data trained on bailey
+Features trained on all
+Number of features = 106
+Features	Index(['SIFT_score', 'SIFT_pred', 'Polyphen2_HDIV_score',
+       'Polyphen2_HDIV_pred', 'Polyphen2_HVAR_score', 'Polyphen2_HVAR_pred',
+       'LRT_score', 'LRT_pred', 'MutationTaster_score', 'MutationTaster_pred',
+       ...
+       'logCPM', 'Degree', 'Closeness_centrality', 'Betweeness_centrality',
+       'FC_Degree', 'FC_Closeness_centrality', 'FC_Betweeness_centrality',
+       'neigh_FC', 'neigh_CNV_FC', 'neigh_CNV_normFC'],
+      dtype='object', length=106)
+
+
+
+	Neutral	Oncogene	Tumor suppressor
+Train	2546	128	244
+Test	1160	64	104
+
+Total number samples (Train) = 249
+
+Total number samples (Test) = 108
+
+Model used = BalBag
+Best estimator = BalancedBaggingClassifier(base_estimator=DecisionTreeClassifier(),
+                          n_estimators=500, n_jobs=2, random_state=0)
+Best parameter = {'max_features': 1.0, 'n_estimators': 500}
+Best score = 0.9630755836525221
+	Training			Test
+	Neutral	Oncogene	Tumor suppressor	Neutral	Oncogene	Tumor suppressor
+Accuracy	0.9736			0.9721
+F1 score	0.9846	0.9046	0.9071	0.9838	0.9014	0.8987	
+Precision	1.0000	0.8258	0.8299	0.9982	0.8205	0.8293	
+Recall	0.9698	1.0000	1.0000	0.9698	1.0000	0.9808	

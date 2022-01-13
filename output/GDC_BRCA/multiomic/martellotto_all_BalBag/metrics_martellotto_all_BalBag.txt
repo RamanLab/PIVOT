@@ -1,0 +1,62 @@
+Data trained on martellotto
+Features trained on all
+Number of features = 100
+Features	Index(['SIFT_score', 'SIFT_pred', 'Polyphen2_HDIV_score',
+       'Polyphen2_HDIV_pred', 'Polyphen2_HVAR_score', 'Polyphen2_HVAR_pred',
+       'LRT_score', 'LRT_pred', 'MutationTaster_score', 'MutationTaster_pred',
+       'MutationAssessor_score', 'MutationAssessor_pred', 'FATHMM_score',
+       'FATHMM_pred', 'PROVEAN_score', 'PROVEAN_pred', 'VEST3_score',
+       'CADD_raw', 'CADD_phred', 'DANN_score', 'fathmm-MKL_coding_score',
+       'fathmm-MKL_coding_pred', 'MetaSVM_score', 'MetaSVM_pred',
+       'MetaLR_score', 'MetaLR_pred', 'integrated_fitCons_score',
+       'integrated_confidence_value', 'GERP++_RS', 'phyloP7way_vertebrate',
+       'phyloP20way_mammalian', 'phastCons7way_vertebrate',
+       'phastCons20way_mammalian', 'SiPhy_29way_logOdds', 'CNV',
+       'Variant_Classification_Missense_Mutation',
+       'Variant_Classification_Silent',
+       'Variant_Classification_Nonsense_Mutation',
+       'Variant_Classification_Frame_Shift_Del',
+       'Variant_Classification_Intron', 'Variant_Classification_RNA',
+       'Variant_Classification_Frame_Shift_Ins',
+       'Variant_Classification_5'UTR', 'Variant_Classification_3'UTR',
+       'Variant_Classification_3'Flank', 'Variant_Classification_Splice_Site',
+       'Variant_Classification_Splice_Region',
+       'Variant_Classification_5'Flank', 'Variant_Classification_In_Frame_Del',
+       'Variant_Classification_Translation_Start_Site',
+       'Variant_Classification_Nonstop_Mutation',
+       'Variant_Classification_In_Frame_Ins', 'Variant_Classification_IGR',
+       'DOM_PF13853', 'DOM_PF00119', 'DOM_PF03154', 'DOM_PF02312',
+       'DOM_PF00115', 'DOM_PF00510', 'DOM_PF00028', 'DOM_PF13631',
+       'DOM_PF15504', 'DOM_PF15260', 'DOM_PF06229', 'DOM_PF00320',
+       'DOM_PF15991', 'DOM_PF09040', 'DOM_PF00125', 'DOM_PF06455',
+       'DOM_PF00146', 'DOM_PF00507', 'DOM_PF01059', 'DOM_PF00870',
+       'DOM_PF07710', 'DOM_PF00792', 'DOM_PF16454', 'DOM_PF02192',
+       'DOM_PF00613', 'DOM_PF10409', 'DOM_PF00361', 'DOM_PF00853',
+       'DOM_PF00907', 'DOM_PF15444', 'DOM_PF04553', 'hsa-mir-190b',
+       'hsa-mir-301b', 'hsa-mir-375', 'hsa-mir-429', 'hsa-mir-592', 'logFC',
+       'logCPM', 'Degree', 'Closeness_centrality', 'Betweeness_centrality',
+       'FC_Degree', 'FC_Closeness_centrality', 'FC_Betweeness_centrality',
+       'neigh_FC', 'neigh_CNV_FC', 'neigh_CNV_normFC'],
+      dtype='object')
+
+
+
+	Neutral	New cancer gene	Oncogene	Tumor suppressor
+Train	2442	19	247	147
+Test	963	4	99	54
+
+Total number samples (Train) = 616
+
+Total number samples (Test) = 261
+
+Model used = BalBag
+Best estimator = BalancedBaggingClassifier(base_estimator=DecisionTreeClassifier(), n_jobs=2,
+                          random_state=0)
+Best parameter = {'max_features': 1.0, 'n_estimators': 10}
+Best score = 0.9758039009352929
+	Training			Test
+	Neutral	New cancer gene	Oncogene	Tumor suppressor	Neutral	New cancer gene	Oncogene	Tumor suppressor
+Accuracy	0.9751				0.9616
+F1 score	0.9857	0.4086	0.9878	0.9600	0.9789	0.2353	0.9741	0.8739	
+Precision	0.9975	0.2568	0.9959	0.9412	0.9957	0.1333	1.0000	0.8000	
+Recall	0.9742	1.0000	0.9798	0.9796	0.9626	1.0000	0.9495	0.9630	

@@ -1,0 +1,48 @@
+Data trained on cgc
+Features trained on some
+Number of features = 54
+Features	Index(['SIFT_pred', 'Polyphen2_HDIV_pred', 'Polyphen2_HVAR_pred', 'LRT_pred',
+       'MutationTaster_pred', 'MutationAssessor_pred', 'FATHMM_pred',
+       'PROVEAN_pred', 'fathmm-MKL_coding_pred', 'MetaSVM_pred', 'MetaLR_pred',
+       'Variant_Classification_Missense_Mutation',
+       'Variant_Classification_Silent',
+       'Variant_Classification_Nonsense_Mutation',
+       'Variant_Classification_Frame_Shift_Del',
+       'Variant_Classification_Intron', 'Variant_Classification_RNA',
+       'Variant_Classification_Frame_Shift_Ins',
+       'Variant_Classification_5'UTR', 'Variant_Classification_3'UTR',
+       'Variant_Classification_3'Flank', 'Variant_Classification_Splice_Site',
+       'Variant_Classification_Splice_Region',
+       'Variant_Classification_5'Flank', 'Variant_Classification_In_Frame_Del',
+       'Variant_Classification_Translation_Start_Site',
+       'Variant_Classification_Nonstop_Mutation',
+       'Variant_Classification_In_Frame_Ins', 'Variant_Classification_IGR',
+       'DOM_PF13853', 'DOM_PF08180', 'DOM_PF15482', 'DOM_PF12301',
+       'DOM_PF05392', 'DOM_PF12540', 'DOM_PF14642', 'DOM_PF00757',
+       'DOM_PF09040', 'DOM_PF00505', 'DOM_PF00180', 'DOM_PF16210',
+       'DOM_PF01500', 'DOM_PF13885', 'DOM_PF07544', 'DOM_PF00870',
+       'DOM_PF07710', 'DOM_PF05028', 'DOM_PF16454', 'DOM_PF10409',
+       'DOM_PF00277', 'DOM_PF07458', 'DOM_PF10581', 'DOM_PF15664',
+       'DOM_PF05206'],
+      dtype='object')
+
+
+
+	Neutral	Oncogene	Tumor suppressor
+Train	984	509	444
+Test	407	227	191
+
+Total number samples (Train) = 349
+
+Total number samples (Test) = 150
+
+Model used = EasyEns
+Best estimator = EasyEnsembleClassifier(n_jobs=2, random_state=0)
+Best parameter = {'n_estimators': 10}
+Best score = 0.6672338329534961
+	Training			Test
+	Neutral	Oncogene	Tumor suppressor	Neutral	Oncogene	Tumor suppressor
+Accuracy	0.6923			0.6739
+F1 score	0.7503	0.7452	0.4983	0.7380	0.7128	0.4543	
+Precision	0.6872	0.9598	0.5058	0.6534	0.8993	0.5203	
+Recall	0.8262	0.6090	0.4910	0.8477	0.5903	0.4031	

@@ -1,0 +1,32 @@
+Data trained on bailey
+Features trained on all
+Number of features = 177
+Features	Index(['SIFT_score', 'SIFT_pred', 'Polyphen2_HDIV_score',
+       'Polyphen2_HDIV_pred', 'Polyphen2_HVAR_score', 'Polyphen2_HVAR_pred',
+       'LRT_score', 'LRT_pred', 'MutationTaster_score', 'MutationTaster_pred',
+       ...
+       'logCPM', 'Degree', 'Closeness_centrality', 'Betweeness_centrality',
+       'FC_Degree', 'FC_Closeness_centrality', 'FC_Betweeness_centrality',
+       'neigh_FC', 'neigh_CNV_FC', 'neigh_CNV_normFC'],
+      dtype='object', length=177)
+
+
+
+	Neutral	Oncogene	Tumor suppressor
+Train	6172	112	225
+Test	3105	44	126
+
+Total number samples (Train) = 332
+
+Total number samples (Test) = 152
+
+Model used = EasyEns
+Best estimator = EasyEnsembleClassifier(n_estimators=100, n_jobs=2, random_state=0)
+Best parameter = {'n_estimators': 100}
+Best score = 0.9497763273877393
+	Training			Test
+	Neutral	Oncogene	Tumor suppressor	Neutral	Oncogene	Tumor suppressor
+Accuracy	0.9493			0.9542
+F1 score	0.9732	0.9677	0.5600	0.9761	0.9398	0.6173	
+Precision	0.9974	1.0000	0.4000	0.9983	1.0000	0.4549	
+Recall	0.9501	0.9375	0.9333	0.9549	0.8864	0.9603	

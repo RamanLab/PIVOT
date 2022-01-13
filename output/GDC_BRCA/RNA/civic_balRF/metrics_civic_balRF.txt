@@ -1,0 +1,28 @@
+Data trained on civic
+Number of features = 10
+Features	Index(['logFC', 'logCPM', 'Degree', 'Closeness_centrality',
+       'Betweeness_centrality', 'FC_Degree', 'FC_Closeness_centrality',
+       'FC_Betweeness_centrality', 'neigh_FC', 'neigh_normFC'],
+      dtype='object')
+
+
+
+	Driver	Neutral
+Train	199	4364
+Test	105	2118
+
+Total number samples (Train) = 647
+
+Total number samples (Test) = 291
+
+Model used = balRF
+Best estimator = BalancedRandomForestClassifier(max_depth=3, max_features=10, n_jobs=2,
+                               random_state=0)
+Best parameter = {'criterion': 'gini', 'max_depth': 3, 'max_features': 10, 'n_estimators': 100}
+Best score = 0.995305416275604
+	Training			Test
+	Driver	Neutral	Driver	Neutral
+Accuracy	0.9967		0.9960
+F1 score	0.9637	0.9983	0.9589	0.9979	
+Precision	0.9299	1.0000	0.9211	1.0000	
+Recall	1.0000	0.9966	1.0000	0.9958	

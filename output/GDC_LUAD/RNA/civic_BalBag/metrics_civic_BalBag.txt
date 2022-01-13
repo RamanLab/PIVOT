@@ -1,0 +1,17 @@
+Data trained on civic
+Number of features = 10
+Features	Index(['logFC', 'logCPM', 'Degree', 'Closeness_centrality',
+       'Betweeness_centrality', 'FC_Degree', 'FC_Closeness_centrality',
+       'FC_Betweeness_centrality', 'neigh_FC', 'neigh_normFC'],
+      dtype='object')
+
+
+
+	Neutral
+Train	9656
+Test	4262
+
+Total number samples (Train) = 343
+
+Total number samples (Test) = 153
+

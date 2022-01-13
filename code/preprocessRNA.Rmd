@@ -1,0 +1,250 @@
+---
+title: "cTaG2.0: Preproccessing RNA-seq data"
+output: html_notebook
+---
+
+This document is used to preprocess data downloaded from TCGA using GDC. The output is used to generate features and run cTaG 2.0.
+
+The required files are
+- sample mapping file (e.g. gdc_sample_sheet.2021-06-16.tsv)
+- paths to raw count files
+
+All files are read and collated into a single data frame. The collated data is then used to run differential expression of genes.
+TCGA data contains tumour samples as well a normal samples from adjacent tissue. Not all samples have a matched normal. 
+
+DEGs are calculated for individual samples against all normal samples. We filter DEGs based on the FC and p-value <= 0.05.
+
+You are advised to use raw counts for the analysis.
+
+The steps below are used on cohort with both, tumour and normal samples. Some steps may be skipped based on structure of your data. 
+
+## Import required packages
+```{r setup, include=FALSE}
+library("edgeR", "sys")
+library(tidyr)
+library(parallel)
+# library("edgeR", lib.loc="~/R/win-library/3.5")
+```
+## Set paths to the data
+*DATAPATH* refers to the path where the sample files and folders with raw counts reside. The output will be be stored in the relevant folders in *PATH*.
+```{r}
+ctype = "LUAD"
+n_threads = 40
+# detectCores()
+
+# PATH = "D:/Projects/cTaG2.0"
+# DATAPATH = "D:/Projects/data/cTaG2.0"
+
+PATH = "/data/malvika/cTaG2.0"
+DATAPATH = "/data/malvika/data/cTaG2.0"
+```
+## Load sample mapping file
+File do no contain sample names, only Ensembl genes and raw counts. Here we upload a sample mapping file to map the filename to samples.
+The filename for raw counts is the second column.
+
+The key for necessary columns and their values is given below:
+- Sample.ID: Contains unique TCGA sample ID (format: TCGA-XXX-XXXX-XXA)
+- Case.ID: Patient ID
+- Sample.Type: The type of sample (Primary Tumor, Solid Tissue Normal, Metastatic)
+
+```{r}
+setwd(paste(DATAPATH, "/GDC_", ctype, "/RNA-seq", sep=""))
+# fname = "gdc_sample_sheet.2021-06-16.tsv"
+fname = "gdc_sample_sheet.2021-12-03.tsv"
+samp_info = read.table(fname, header=TRUE, sep="\t", row.names = 2)
+```
+```{r}
+print("Total number of unique samples")
+length(unique(samp_info[,"Sample.ID"]))
+```
+```{r}
+print("Total number of unique patients")
+length(unique(samp_info[,"Case.ID"]))
+```
+```{r}
+print("Unique sample types:")
+unique(samp_info[,"Sample.Type"])
+```
+```{r}
+print("Total number of samples of type primary")
+nrow(samp_info[samp_info$Sample.Type == "Primary Tumor", ])
+```
+```{r}
+print("Total number of samples of type normal")
+nrow(samp_info[samp_info$Sample.Type == "Solid Tissue Normal", ])
+```
+```{r}
+print("Total number of samples of type metastatic")
+nrow(samp_info[samp_info$Sample.Type == "Metastatic", ])
+```
+## Load file for hugo symbol mapping
+Load the file containing Hugo Symbol to Ensemble Gene ID mapping. The Ensembl gene contains duplicate entries and we filter the data to unique IDs.
+```{r}
+setwd(DATAPATH)
+fname = "hugo2ensmbl.txt"
+data_map = read.table(fname, header=TRUE, sep="\t", fill=TRUE)
+data_map = data_map[!duplicated(data_map$Ensembl.gene.ID), ]
+row.names(data_map) = data_map$Ensembl.gene.ID
+```
+## Load raw read counts
+The files for individual data is assumed to be in individual folders under *DATAPATH* with the suffix *.htseq.counts.gz*.
+
+We filter samples to retain only primary and normal samples. Metastatic samples are filtered out. For some patients multiple primary tissue samples were sequenced. We consider only one file in such cases. 
+```{r}
+RNA_matrix = TRUE
+uni_samp = unique(samp_info[samp_info$Sample.Type == "Primary Tumor" | samp_info$Sample.Type == "Solid Tissue Normal","Sample.ID"])
+setwd(paste(DATAPATH, "/GDC_", ctype, "/RNA-seq", sep=""))
+for (file in unlist(Sys.glob("./*/*.htseq.counts.gz"))){
+  fname = tail(unlist(strsplit(file, "/")), n=1)
+  samp_type = samp_info[fname, "Sample.Type"]
+  # Check sample type
+  if (samp_type == "Primary Tumor" | samp_type == "Solid Tissue Normal"){
+    samp = samp_info[fname, "Sample.ID"]
+    # Read file and format ensembl ids to remove version
+    temp = read.table(file, sep="\t", header=FALSE,
+                      col.names = c("Gene", samp), comment.char = "_")
+    temp = separate(temp, "Gene", sep="\\.", into = c("Ensembl_ID", "version"))
+    # Update rownames
+    row.names(temp) = temp$Ensembl_ID
+    temp = subset(temp, select = -c(Ensembl_ID, version))
+    colnames(temp) = samp
+    # Initialize dataframe if first instance
+    if (typeof(RNA_matrix) == "logical"){
+      RNA_matrix = data.frame(matrix(nrow = length(row.names(temp)),
+                               ncol = length(uni_samp)))
+      row.names(RNA_matrix) = row.names(temp)
+      colnames(RNA_matrix) = uni_samp
+    }
+    # Update RNA matrix
+    RNA_matrix[row.names(RNA_matrix), samp] = c(temp[row.names(RNA_matrix), samp])
+  }
+}
+```
+Update row names from Ensemble IDs to gene symbols. Entries with no mapping and duplicate entries are dropped.
+```{r}
+vec=c()
+for (ensg in row.names(RNA_matrix)){
+  vec=append(vec,data_map[ensg, "Approved.symbol"])
+}
+RNA_matrix$Gene = vec
+RNA_matrix=drop_na(RNA_matrix, Gene)
+dim(RNA_matrix[!duplicated(RNA_matrix$Gene), ])
+row.names(RNA_matrix) = RNA_matrix$Gene
+RNA_matrix = subset(RNA_matrix, select = -c(Gene))
+```
+## Saving processed raw count matrix
+
+```{r}
+setwd(paste(DATAPATH, "/GDC_", ctype, "/RNA-seq", sep = ""))
+fname = paste("RNA_matrix_", ctype, ".tsv", sep = "")
+write.table(RNA_matrix, fname, quote = FALSE, sep = "\t", row.names = TRUE, col.names = TRUE)
+```
+
+## Load Raw count matrix
+Loads Raw counts matrix from a file. *fname* refers to the file containing the raw count matrix. Rows signify gene and columns are samples.
+```{r}
+setwd(paste(DATAPATH, "/GDC_", ctype, "/RNA-seq", sep = ""))
+fname = paste("RNA_matrix_", ctype, ".tsv", sep = "")
+RNA_matrix= read.table(fname, sep = "\t", header = TRUE, as.is = FALSE, row.names = 1)
+```
+
+## DGE object creation
+```{r }
+y = DGEList(counts=RNA_matrix, genes=row.names(RNA_matrix))
+
+```
+
+## Filtering
+```{r }
+keep <- rowSums(cpm(y)>1) >= 10
+y <- y[keep, , keep.lib.sizes=FALSE]
+
+```
+
+## Normalisation
+```{r }
+y = calcNormFactors(y)
+```
+
+## Data exploration
+```{r }
+# plotMDS(y)
+```
+
+## Setting up model
+```{r }
+t_n_list = c()
+for ( x in colnames(RNA_matrix)){
+  t_n_list = append(t_n_list, strtoi(substr(x,14, 14)))
+  }
+group <- factor(t_n_list)
+design <- model.matrix(~group)
+
+```
+
+## Estimate dispersion
+```{r}
+y <- estimateDisp(y,design)
+plotBCV(y)
+
+```
+## Get common dispersion
+
+```{r}
+normal_idx = which(t_n_list == 1)
+tumor_idx = which(t_n_list == 0)
+bcv = y$common.dispersion
+```
+
+```{r}
+getDEGs <- function(idx, normal_idx, RNA_matrix, bcv, op_path){
+  z =  DGEList(counts=RNA_matrix[c(idx, normal_idx)], genes=row.names(RNA_matrix))
+  keep <- rowSums(cpm(z)>1) >= 10
+  z <- z[keep, , keep.lib.sizes=FALSE]
+  z = calcNormFactors(z)
+  group <- factor(c(idx, normal_idx))
+  design <- model.matrix(~group)
+  fit <- glmFit(z, design, dispersion = bcv ^ 2)
+  lrt <- glmTreat(fit, coef = 2, lfc=1)
+  topTags(lrt)
+  setwd(op_path)
+  fname = paste(colnames(RNA_matrix)[idx], ".tsv", sep="")
+  write.table(topTags(lrt, n=lengths(z$genes)["genes"]), fname,sep="\t")
+
+}
+```
+```{r}
+op_path = paste(PATH, "/data/GDC_", ctype, "/RNA-seq", sep = "")
+r <- mclapply(tumor_idx, getDEGs, normal_idx=normal_idx, RNA_matrix=RNA_matrix, bcv=bcv, op_path=op_path, mc.cores = n_threads) 
+```
+
+<!-- ## Differential expression -->
+<!-- ```{r} -->
+<!-- fit <- glmFit(y, design) -->
+<!-- lrt <- glmTreat(fit, coef = 2, lfc=1) -->
+<!-- topTags(lrt) -->
+
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- setwd("D:/Projects/IdentificationOfTSG-OG/cTaG_2/data/GDC_BRCA/RNA-seq/RNA-seq") -->
+<!-- fname = "DEGs.tsv" -->
+<!-- write.table(topTags(lrt, n=8000), fname,sep="\t") -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- plotMD(lrt) -->
+<!-- abline(h=c(-1, 1), col="blue") -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- summary(decideTests(lrt)) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- y$samples -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- logcpm = cpm(y, log = TRUE) -->
+<!-- rpkmval = rpkm(y) -->
+<!-- tpm = t(t(rpkmval)/colSums(rpkmval)) *1e6 -->
+<!-- ``` -->
+
+

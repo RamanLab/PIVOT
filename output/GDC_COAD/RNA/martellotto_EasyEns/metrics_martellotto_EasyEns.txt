@@ -1,0 +1,17 @@
+Data trained on martellotto
+Number of features = 10
+Features	Index(['logFC', 'logCPM', 'Degree', 'Closeness_centrality',
+       'Betweeness_centrality', 'FC_Degree', 'FC_Closeness_centrality',
+       'FC_Betweeness_centrality', 'neigh_FC', 'neigh_normFC'],
+      dtype='object')
+
+
+
+	Neutral
+Train	4601
+Test	1882
+
+Total number samples (Train) = 252
+
+Total number samples (Test) = 107
+

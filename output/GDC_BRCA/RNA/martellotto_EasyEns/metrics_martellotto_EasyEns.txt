@@ -1,0 +1,27 @@
+Data trained on martellotto
+Number of features = 10
+Features	Index(['logFC', 'logCPM', 'Degree', 'Closeness_centrality',
+       'Betweeness_centrality', 'FC_Degree', 'FC_Closeness_centrality',
+       'FC_Betweeness_centrality', 'neigh_FC', 'neigh_normFC'],
+      dtype='object')
+
+
+
+	Neutral	New cancer gene	Oncogene	Tumor suppressor
+Train	4364	19	213	134
+Test	2118	4	121	66
+
+Total number samples (Train) = 653
+
+Total number samples (Test) = 294
+
+Model used = EasyEns
+Best estimator = EasyEnsembleClassifier(n_estimators=40, n_jobs=2, random_state=0)
+Best parameter = {'n_estimators': 40}
+Best score = 0.9753389090918333
+	Training			Test
+	Neutral	New cancer gene	Oncogene	Tumor suppressor	Neutral	New cancer gene	Oncogene	Tumor suppressor
+Accuracy	0.9649				0.9623
+F1 score	0.9809	0.2289	0.9231	0.9810	0.9798	0.1026	0.9398	0.9606	
+Precision	0.9986	0.1293	0.8678	1.0000	0.9971	0.0541	0.9141	1.0000	
+Recall	0.9638	1.0000	0.9859	0.9627	0.9632	1.0000	0.9669	0.9242	
