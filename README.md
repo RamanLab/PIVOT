@@ -89,7 +89,7 @@ PIVOT requires the following dependencies to run smoothly:
 
 ## Using PIVOT
 - Download [COAD data](https://doi.org/10.5281/zenodo.5898163).
-- Open `cTaG2_predict.ipynb` notebook and follow thw steps
+- Open `PIVOT_predict.ipynb` notebook and follow thw steps
 
 
 ## Links
