@@ -23,10 +23,7 @@ import pickle
 import multiprocessing as mp
 import logging
 import glob
-# # Load dependent modules
-# os.chdir(PATH + "/code")
 import snv_classifier as snv
-# import rna_classifier as rna
 
 
 def getCnvNeighFeat(data_all, data_rna, G, neighbors, norm = False):
@@ -82,14 +79,16 @@ def getCnvNeighFeat(data_all, data_rna, G, neighbors, norm = False):
 
 def compareCols(list1, list2, value):
     """
-    
+    Function for handelling nan values by comparing two columns
 
     Parameters
     ----------
-    list1 : TYPE
+    list1 : list
         DESCRIPTION.
-    list2 : TYPE
+    list2 : list
         DESCRIPTION.
+    value : str
+        Value to appended based on values on two columns
 
     Returns
     -------
@@ -128,7 +127,9 @@ def getNeighFeat(genes, data_rna_all, G, neighbors, norm = False):
 
     Parameters
     ----------
-    data_rna : DataFrame
+    genes : list
+        List of genes to be considered.
+    data_rna_all : DataFrame
         DataFrame containing the fold change data. Should contain column 
         "logFC".
     G : networkx graph object
@@ -164,7 +165,10 @@ def getNeighFeat(genes, data_rna_all, G, neighbors, norm = False):
 
 def getMultiFeatures(args):
     """
-    Function for generating RNA features using egdeR results as well as network.
+    Function for generating RNA features using egdeR results as well as 
+    network.
+    
+    Generates features using parallel process.
 
     Parameters
     ----------
@@ -275,6 +279,10 @@ def get_multiX(data_snv, rnapath, data_cnv, data_miRNA, sample_list, DATAPATH,
         Cancer-type.
     lab_type : str
         Labelling stratergy to be used.
+    n_threads : int
+        Number of threads to be used. Default 1.
+    train : str
+        If True removes rows Unlabelled. Default False.
 
     Returns
     -------
@@ -394,19 +402,6 @@ def get_multiX(data_snv, rnapath, data_cnv, data_miRNA, sample_list, DATAPATH,
 
     # TODO
     logging.info("included RNA features")
-    # for idx, file in enumerate(sample_list):
-    #     temp = getMultiFeatures(data, rnapath, file, ctype, G, deg, bc, cc, neighbors, n=n)
-    #     # # Assign labels to RNA data
-    #     # temp["Label"] = [snv_lab.loc[idx, "Label"] if idx in snv_lab.index else "Unlabelled" for idx in temp.index]
-    #     # temp = temp[temp["Label"] != "Unlabelled"]
-    #     # # Drop nan rows 
-    #     data_all[idx] = temp
-    #     # TODO
-    #     logging.info(idx)
-
-    # Concat data
-#     data_all = pd.concat(data_all)
-
 
     # fill na 
     data_all["logFC"].fillna(0, inplace=True)

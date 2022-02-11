@@ -12,8 +12,6 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import glob
-import re
 import random
 import numpy as np
 from imblearn.ensemble import BalancedRandomForestClassifier
@@ -24,11 +22,9 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import accuracy_score, f1_score, precision_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import roc_curve, auc
-from sklearn.metrics import roc_auc_score
 from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import average_precision_score
 from itertools import cycle
-from scipy import interp
 import pickle
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import OrdinalEncoder
@@ -36,19 +32,20 @@ from sklearn.preprocessing import OrdinalEncoder
 
 def getCivicLabels(data, DATAPATH):
     """
-    Get Civic labels along with neutral gene labels
+    Get CIViC labels along with neutral gene labels
 
     Parameters
     ----------
     data : DataFrame
-        DESCRIPTION.
+        Must contain columns "Hugo_Symbol", "Chr", "Start", "End", "Ref", and
+        "Alt".
     DATAPATH : str
-        DESCRIPTION.
+        Path to PIVOT data folder.
 
     Returns
     -------
-    data : TYPE
-        DESCRIPTION.
+    data : DataFrame
+        Contains a column "Label" that includes CIViC labels.
 
     """
     data = data.copy()
@@ -80,14 +77,14 @@ def getCGCLabels(data, DATAPATH):
     Parameters
     ----------
     data : DataFrame
-        DESCRIPTION.
+        Must contain columns "Hugo_Symbol".
     DATAPATH : str
-        DESCRIPTION.
+        Path to PIVOT data folder.
 
     Returns
     -------
-    data : TYPE
-        DESCRIPTION.
+    data : DataFrame
+        Contains a column "Label" that includes CGC labels.
 
     """
     data = data.copy()
@@ -121,16 +118,16 @@ def getBaileyLabels(data, DATAPATH, ctype):
     Parameters
     ----------
     data : DataFrame
-        DESCRIPTION.
+        Must contain columns "Hugo_Symbol".
     DATAPATH : str
-        DESCRIPTION.
+        Path to PIVOT data folder.
     ctype : str
-        DESCRIPTION.
+        TCGA cancer type.
 
     Returns
     -------
-    data : TYPE
-        DESCRIPTION.
+    data : DataFrame
+        Contains a column "Label" that includes Bailey et al. gene labels.
 
     """
     data = data.copy()
@@ -169,14 +166,15 @@ def getMartelottoLabels(data, DATAPATH):
     Parameters
     ----------
     data : DataFrame
-        DESCRIPTION.
+        Must contain columns "Hugo_Symbol", "Chr", "Start", "End", "Ref", and
+        "Alt".
     DATAPATH : str
-        DESCRIPTION.
+        Path to PIVOT data folder.
 
     Returns
     -------
     data : DataFrame
-        DESCRIPTION.
+        Contains a column "Label" that includes Martelotto et al. gene labels.
 
     """
     data = data.copy()
@@ -291,26 +289,32 @@ def getSNVFeatures(data, ctype, path_domains):
     return data
 
 
-def getSNV_X(data, sample_list, DATAPATH, feat_num, ctype):
+def getSNV_X(data, sample_list, DATAPATH, feat_num, ctype, lab_type):
     """
-    
+    Process the data to generate features using the data given and 
+    remove datapoints with missing data.
 
     Parameters
     ----------
-    data : TYPE
+    data : DataFrame
+        .
+    sample_list : list
         DESCRIPTION.
-    sample_list : TYPE
-        DESCRIPTION.
-    sample_list : TYPE
-        DESCRIPTION.
-    sample_list : TYPE
-        DESCRIPTION.
-    sample_list : TYPE
-        DESCRIPTION.
+    DATAPATH : str
+        Path to PIVOT data folder.
+    feat_num : str
+        "All" or "Some" feature sets.
+    ctype : str
+        TCGA cancer type.
+    lab_type : str
+        Labelling strategy to be used.
 
     Returns
     -------
-    None.
+    X : DataFrame
+        Features to be given to PIVOT and the labels.
+    X_meta : DataFrame
+        Meta data corresponding to the DataFrame.
 
     """
     # get split data
@@ -396,6 +400,23 @@ def feat_importance(model, model_obj, feat_list):
 
 def plotROC(n_classes, y_test, y_prob, model):
     """
+    Plots ROC
+
+    Parameters
+    ----------
+    n_classes : list
+        Set of classes.
+    y_test : list
+        True labels.
+    y_prob : list
+        Predicted probabilities.
+    model : object
+        Model used for training.
+
+    Returns
+    -------
+    None.
+
     """
     fpr = dict()
     tpr = dict()
@@ -470,6 +491,23 @@ def plotROC(n_classes, y_test, y_prob, model):
 
 def plotPRC(n_classes, y_test, y_prob, model):
     """
+    Plots PRC
+
+    Parameters
+    ----------
+    n_classes : list
+        Set of classes.
+    y_test : list
+        True labels.
+    y_prob : list
+        Predicted probabilities.
+    model : object
+        Model used for training.
+
+    Returns
+    -------
+    None.
+
     """
     precision = dict()
     recall = dict()
