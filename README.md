@@ -1,6 +1,10 @@
 # PIVOT
 PIVOT (<ins>P</ins>ersonalised <ins>I</ins>dentification of dri<ins>V</ins>er <ins>O</ins>ncogenes and <ins>T</ins>umour suppressors) is a tool used to identify personalised tumour suppressor genes (TSGs) and oncogenes (OGs) using multi-omic data. The genes are labelled at for each patient as TSG or OG.
 
+### Citing PIVOT
+If you use PIVOT in your work, please cite
+>Sudhakar M, Rengaswamy R and Raman K (2022) Multi-Omic Data Improve Prediction of Personalized Tumor Suppressors and Oncogenes. _Frontiers in Genetics_ *13*:854190. doi: [10.3389/fgene.2022.854190](https://www.frontiersin.org/articles/10.3389/fgene.2022.854190/full)
+
 ## Table of Contents
 
 - [Description](#description)
@@ -8,7 +12,6 @@ PIVOT (<ins>P</ins>ersonalised <ins>I</ins>dentification of dri<ins>V</ins>er <i
 - [Folder structure](#folder-structure)
 - [Installation](#installation)
 - [Using PIVOT](#using-pivot)
-- [Links](#links)
 
 ## Description
 
@@ -92,5 +95,12 @@ PIVOT requires the following dependencies to run smoothly:
 - Open `PIVOT_predict.ipynb` notebook and follow thw steps
 
 
-## Links
-[BioRxiv paper](https://doi.org/10.1101/2022.01.13.476163)
+### Acknowledgements
+* Grant BT/PR16710/BID/7/680/2016 from the [Department of Biotechnology, Government of India](https://www.dbtindia.nic.in/).
+* [Centre for Integrative Biology and Systems mEdicine](https://ibse.iitm.ac.in/)
+* [Robert Bosch Centre for Data Science and Artificial Intelligence (RBCDSAI)](https://rbcdsai.iitm.ac.in/)
+* [Indian Institute of Technology Madras](https://iitm.ac.in) Grant: SB20210841BTMHRD008752
+* Malvika Sudhakar acknowledges the HTRA fellowship from the Ministry of Education, Government of India
+
+<img title="IBSE logo" src="https://ibse.iitm.ac.in/images/ibse-logo.png" height="200" width="200"><img title="RBC-DSAI logo" src="https://github.com/RBC-DSAI-IITM/rbc-dsai-iitm.github.io/blob/master/images/logo.jpg" height="200" width="351">
+
